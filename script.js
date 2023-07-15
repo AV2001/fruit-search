@@ -85,9 +85,11 @@ const fruits = [
 
 function search(str) {
     let results = [];
-
-    // TODO
-
+    results = fruits.filter((fruit) => {
+        if (fruit.toLowerCase().includes(str)) {
+            return fruit;
+        }
+    });
     return results;
 }
 
@@ -102,6 +104,8 @@ function showSuggestions(results, inputVal) {
 function useSuggestion(e) {
     // TODO
 }
+
+console.log(search('ap'));
 
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
