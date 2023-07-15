@@ -86,7 +86,7 @@ const fruits = [
 function search(str) {
     let results = [];
     results = fruits.filter((fruit) => {
-        if (fruit.toLowerCase().includes(str)) {
+        if (fruit.toLowerCase().includes(str.toLowerCase())) {
             return fruit;
         }
     });
@@ -94,18 +94,21 @@ function search(str) {
 }
 
 function searchHandler(e) {
-    // TODO
+    showSuggestions(search(e.target.value));
 }
 
 function showSuggestions(results, inputVal) {
-    // TODO
+    suggestions.innerText = '';
+    results.forEach((result) => {
+        const suggestion = document.createElement('li');
+        suggestion.innerText = result;
+        suggestions.append(suggestion);
+    });
 }
 
 function useSuggestion(e) {
     // TODO
 }
-
-console.log(search('ap'));
 
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
