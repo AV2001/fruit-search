@@ -107,7 +107,7 @@ function showSuggestions(results, inputVal) {
 }
 
 function useSuggestion(e) {
-    // TODO
+    input.value = e.target.innerText;
 }
 
 input.addEventListener('keyup', searchHandler);
