@@ -94,10 +94,15 @@ function search(str) {
 }
 
 function searchHandler(e) {
-    showSuggestions(search(e.target.value));
+    if (e.target.value.length > 0) {
+        showSuggestions(search(e.target.value));
+    } else {
+        suggestions.innerText = '';
+    }
 }
 
-function showSuggestions(results, inputVal) {
+function showSuggestions(results) {
+    // Clear the existing list items before displaying new ones
     suggestions.innerText = '';
     results.forEach((result) => {
         const suggestion = document.createElement('li');
@@ -107,7 +112,10 @@ function showSuggestions(results, inputVal) {
 }
 
 function useSuggestion(e) {
+    // Set the input's value to the selected suggestion
     input.value = e.target.innerText;
+    // Clearing suggestions after a suggestion is clicked
+    suggestions.innerText = '';
 }
 
 input.addEventListener('keyup', searchHandler);
